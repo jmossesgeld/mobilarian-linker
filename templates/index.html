@@ -1,0 +1,21 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+  <!-- Page Header -->
+<div class="container" style="margin-top: 3rem;">
+    <h1>Hello Mobilarians!</h1>
+    <hr>
+    {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+    {% for result in results %}
+      <p>Link result #{{loop.index}}:<br><a href="{{result}}">{{ result }}</a></p><hr>
+    {% endfor%}
+</div>
+
+</body>
+
+{% include "footer.html" %}
+{% endblock %}
