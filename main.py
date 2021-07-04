@@ -55,6 +55,12 @@ def home():
     if form.validate_on_submit():
         text = str(form.title.data).replace(" ","")
         results = FindLinks(remove_emojis(text))
+        for i in range(len(results)):
+            print(results[i][:4])
+            if results[i][:4] != "http":
+                results[i] = f"https://{results[i]}"
+                print(results[i])
+        print(results)
         form.title.data = ""
         return render_template("index.html", results=results, form=form)
 
