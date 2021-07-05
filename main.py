@@ -56,7 +56,7 @@ def home():
         text = str(form.title.data).replace(" ","")
         results = FindLinks(remove_emojis(text))
         for i in range(len(results)):
-            print(results[i][:4])
+            results[i] = results[i].replace("..",".")
             if results[i][:4] != "http":
                 results[i] = f"https://{results[i]}"
                 print(results[i])
