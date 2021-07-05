@@ -11,7 +11,7 @@ import re
 ##WTForm
 class PasteLinkForm(FlaskForm):
     title = TextAreaField("Paste Text Here", validators=[DataRequired()])
-    submit = SubmitField("Submit")
+    submit = SubmitField("Get Links")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "MOBILARIAN LINKER"
