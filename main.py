@@ -1,7 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, flash, abort
-from flask.globals import request
 from flask_bootstrap import Bootstrap
-from flask_ckeditor import CKEditor
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
 from wtforms.fields.simple import TextAreaField
@@ -15,12 +13,9 @@ class PasteLinkForm(FlaskForm):
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "MOBILARIAN LINKER"
-ckeditor = CKEditor(app)
 Bootstrap(app)
 
 def FindLinks(string):  
-    # findall() has been used 
-    # with valid conditions for urls in string
     regex = r"(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
     url = re.findall(regex,string)      
     return [x[0] for x in url]
@@ -67,4 +62,4 @@ def home():
     return render_template("index.html", results=[], form=form)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0')
